@@ -75,6 +75,7 @@ export function ChatArea() {
       >
         <div className="flex items-center gap-3 border-2 border-white rounded-2xl px-4 py-3 bg-background/50 hover:border-white/80 transition-colors group">
           <input
+            id="message-input"
             type="text"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
