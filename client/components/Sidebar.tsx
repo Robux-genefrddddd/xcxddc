@@ -117,7 +117,10 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
 
         {/* New Conversation Button - Discreet */}
         <div className="px-4 py-2 animate-fadeIn" style={{ animationDelay: "0.1s" }}>
-          <button className="w-full flex items-center justify-center gap-2 px-3 py-2 border border-white/40 text-foreground/70 hover:border-white/70 hover:text-foreground hover:bg-white/5 transition-all text-xs font-medium rounded-lg">
+          <button
+            onClick={handleNewConversation}
+            className="w-full flex items-center justify-center gap-2 px-3 py-2 border border-white/40 text-foreground/70 hover:border-white/70 hover:text-foreground hover:bg-white/5 transition-all text-xs font-medium rounded-lg"
+          >
             <Plus size={14} />
             New conversation
           </button>
@@ -127,17 +130,44 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
         <div className="flex-1 overflow-y-auto p-4">
           <div className="space-y-2">
             {conversations.map((conv, idx) => (
-              <button
+              <div
                 key={conv.id}
-                className={`w-full text-left px-4 py-3 rounded-lg text-sm transition-all border-2 ${
-                  conv.active
-                    ? "bg-white/10 text-foreground border-white hover:bg-white/15"
-                    : "text-foreground/70 hover:text-foreground hover:bg-white/5 border-white/30 hover:border-white/60"
-                }`}
+                className="group"
                 style={{ animationDelay: `${0.2 + idx * 0.05}s` }}
               >
-                {conv.name}
-              </button>
+                <div className={`flex items-center gap-2 px-2 py-2 rounded-lg border-2 transition-all ${
+                  conv.active
+                    ? "bg-white/10 border-white"
+                    : "border-white/30 hover:border-white/60"
+                }`}>
+                  <button
+                    onClick={() => setConversations(conversations.map(c => ({ ...c, active: c.id === conv.id })))}
+                    className={`flex-1 text-left text-sm transition-all py-1 px-2 rounded ${
+                      conv.active
+                        ? "text-foreground"
+                        : "text-foreground/70 hover:text-foreground"
+                    }`}
+                  >
+                    {conv.name}
+                  </button>
+                  <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <button
+                      onClick={() => handleEditConversation(conv.id, conv.name)}
+                      className="p-1 text-foreground/70 hover:text-foreground hover:bg-white/10 rounded transition-colors"
+                      title="Edit"
+                    >
+                      <Edit2 size={14} />
+                    </button>
+                    <button
+                      onClick={() => handleDeleteConversation(conv.id)}
+                      className="p-1 text-foreground/70 hover:text-red-400 hover:bg-red-500/10 rounded transition-colors"
+                      title="Delete"
+                    >
+                      <Trash2 size={14} />
+                    </button>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
