@@ -71,10 +71,10 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
           <div className="h-px bg-white/10"></div>
         </div>
 
-        {/* New Conversation Button - More Attractive */}
+        {/* New Conversation Button - Discreet */}
         <div className="px-4 py-2 animate-fadeIn" style={{ animationDelay: "0.1s" }}>
-          <button className="w-full flex items-center justify-center gap-2 px-4 py-3 border-2 border-white text-foreground hover:border-white/80 hover:bg-white/10 transition-all text-sm font-semibold rounded-xl hover:scale-105 transform">
-            <Plus size={18} />
+          <button className="w-full flex items-center justify-center gap-2 px-3 py-2 border border-white/40 text-foreground/70 hover:border-white/70 hover:text-foreground hover:bg-white/5 transition-all text-xs font-medium rounded-lg">
+            <Plus size={14} />
             New conversation
           </button>
         </div>
@@ -101,7 +101,6 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
         {/* Message Usage Section */}
         <div className="px-4 py-4 border-t border-white/10 animate-fadeIn" style={{ animationDelay: "0.25s" }}>
           <div className="flex items-center gap-2 mb-2">
-            <Zap size={14} className="text-white/70" />
             <span className="text-xs text-white/70 font-medium">Messages</span>
           </div>
           <div className="space-y-1">
