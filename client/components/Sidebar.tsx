@@ -96,6 +96,7 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
                 <p className="text-sm font-semibold text-foreground">
                   Nothing
                 </p>
+                <p className="text-xs text-white/50 font-medium">{currentPlan}</p>
               </div>
             </div>
             <Popover>
