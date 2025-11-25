@@ -93,7 +93,7 @@ export function ChatArea() {
             <PopoverTrigger asChild>
               <button
                 className="p-2 text-foreground/60 hover:text-foreground transition-colors hover:bg-foreground/5 rounded-lg"
-                aria-label="Add emoji"
+                aria-label="Ajouter un emoji"
               >
                 <Smile size={18} />
               </button>
