@@ -69,24 +69,24 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
           <div className="h-px bg-white/10"></div>
         </div>
 
-        {/* New Conversation Button - More Prominent */}
-        <div className="px-4 py-3 animate-fadeIn" style={{ animationDelay: "0.1s" }}>
-          <button className="w-full flex items-center justify-center gap-2 px-4 py-3 border-2 border-white text-foreground hover:border-white/80 hover:bg-white/5 transition-all text-sm font-semibold rounded-xl hover:scale-105 transform">
-            <Plus size={18} />
+        {/* New Conversation Button - Discreet */}
+        <div className="px-4 py-2 animate-fadeIn" style={{ animationDelay: "0.1s" }}>
+          <button className="w-full flex items-center justify-center gap-2 px-4 py-2.5 border border-white/30 text-foreground/80 hover:border-white/50 hover:text-foreground hover:bg-white/5 transition-all text-sm font-medium rounded-lg">
+            <Plus size={16} />
             New conversation
           </button>
         </div>
 
         {/* Conversations List */}
         <div className="flex-1 overflow-y-auto p-4">
-          <div className="space-y-2">
+          <div className="space-y-1">
             {conversations.map((conv, idx) => (
               <button
                 key={conv.id}
                 className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all border ${
                   conv.active
-                    ? "bg-white/10 text-foreground border-white"
-                    : "text-foreground/70 hover:text-foreground hover:bg-foreground/5 border-transparent hover:border-white/50"
+                    ? "bg-white/5 text-foreground border-white/40"
+                    : "text-foreground/60 hover:text-foreground/80 hover:bg-white/5 border-transparent hover:border-white/30"
                 }`}
                 style={{ animationDelay: `${0.2 + idx * 0.05}s` }}
               >
