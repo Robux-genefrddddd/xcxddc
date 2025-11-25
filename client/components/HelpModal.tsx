@@ -1,4 +1,9 @@
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { useState } from "react";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 
@@ -10,37 +15,43 @@ interface HelpModalProps {
 const TUTORIAL_STEPS = [
   {
     title: "Welcome to the Chat",
-    description: "This is your intelligent chat interface. You can have conversations with AI and manage multiple chats.",
+    description:
+      "This is your intelligent chat interface. You can have conversations with AI and manage multiple chats.",
     highlight: "main",
     image: "✨",
   },
   {
     title: "Create New Conversations",
-    description: "Click the 'New conversation' button in the sidebar to start a fresh chat. Each conversation is saved separately.",
+    description:
+      "Click the 'New conversation' button in the sidebar to start a fresh chat. Each conversation is saved separately.",
     highlight: "newChat",
     image: "➕",
   },
   {
     title: "Manage Your Chats",
-    description: "Hover over any conversation to see edit and delete options. Rename conversations or remove ones you no longer need.",
+    description:
+      "Hover over any conversation to see edit and delete options. Rename conversations or remove ones you no longer need.",
     highlight: "conversations",
     image: "✏️",
   },
   {
     title: "Send Messages",
-    description: "Type your message in the input box at the bottom. Press Enter to send, or use Shift+Enter for a new line.",
+    description:
+      "Type your message in the input box at the bottom. Press Enter to send, or use Shift+Enter for a new line.",
     highlight: "input",
     image: "💬",
   },
   {
     title: "Emoji Support",
-    description: "Click the smile icon to add emojis to your messages. Make your conversations more expressive!",
+    description:
+      "Click the smile icon to add emojis to your messages. Make your conversations more expressive!",
     highlight: "emoji",
     image: "😊",
   },
   {
     title: "Check Your Usage",
-    description: "The message counter shows how many messages you have left. Upgrade your plan for more messages.",
+    description:
+      "The message counter shows how many messages you have left. Upgrade your plan for more messages.",
     highlight: "messages",
     image: "📊",
   },
@@ -66,7 +77,9 @@ export function HelpModal({ isOpen, onOpenChange }: HelpModalProps) {
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="bg-card border-2 border-white rounded-xl max-w-lg">
         <DialogHeader>
-          <DialogTitle className="text-foreground text-lg">Tutorial & Help</DialogTitle>
+          <DialogTitle className="text-foreground text-lg">
+            Tutorial & Help
+          </DialogTitle>
         </DialogHeader>
 
         <div className="mt-6">
@@ -80,8 +93,12 @@ export function HelpModal({ isOpen, onOpenChange }: HelpModalProps) {
           {/* Content */}
           <div className="space-y-4 mb-6">
             <div>
-              <h3 className="text-lg font-semibold text-foreground mb-2">{step.title}</h3>
-              <p className="text-foreground/70 text-sm leading-relaxed">{step.description}</p>
+              <h3 className="text-lg font-semibold text-foreground mb-2">
+                {step.title}
+              </h3>
+              <p className="text-foreground/70 text-sm leading-relaxed">
+                {step.description}
+              </p>
             </div>
 
             {/* Visual Arrow Guide */}
@@ -102,7 +119,11 @@ export function HelpModal({ isOpen, onOpenChange }: HelpModalProps) {
                 <div
                   key={idx}
                   className={`h-1 flex-1 rounded-full transition-all ${
-                    idx === currentStep ? "bg-white" : idx < currentStep ? "bg-white/50" : "bg-white/20"
+                    idx === currentStep
+                      ? "bg-white"
+                      : idx < currentStep
+                        ? "bg-white/50"
+                        : "bg-white/20"
                   }`}
                 />
               ))}

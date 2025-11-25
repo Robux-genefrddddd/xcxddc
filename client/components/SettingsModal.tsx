@@ -1,4 +1,9 @@
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { useState } from "react";
 import { Moon, Bell, Lock, Volume2 } from "lucide-react";
 
@@ -17,23 +22,25 @@ export function SettingsModal({ isOpen, onOpenChange }: SettingsModalProps) {
   });
 
   const toggleSetting = (key: keyof typeof settings) => {
-    setSettings(prev => ({
+    setSettings((prev) => ({
       ...prev,
       [key]: typeof prev[key] === "boolean" ? !prev[key] : prev[key],
     }));
   };
 
   const handlePrivacyChange = (value: string) => {
-    setSettings(prev => ({ ...prev, privacy: value }));
+    setSettings((prev) => ({ ...prev, privacy: value }));
   };
 
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="bg-card border-2 border-white rounded-xl max-w-md">
         <DialogHeader>
-          <DialogTitle className="text-foreground text-lg">Settings</DialogTitle>
+          <DialogTitle className="text-foreground text-lg">
+            Settings
+          </DialogTitle>
         </DialogHeader>
-        
+
         <div className="space-y-4 mt-4">
           {/* Dark Mode */}
           <div className="flex items-center justify-between p-3 hover:bg-white/5 rounded-lg transition-colors">
@@ -57,16 +64,22 @@ export function SettingsModal({ isOpen, onOpenChange }: SettingsModalProps) {
             <div className="flex items-center gap-3">
               <Bell size={18} className="text-foreground/70" />
               <div>
-                <p className="text-sm font-medium text-foreground">Notifications</p>
+                <p className="text-sm font-medium text-foreground">
+                  Notifications
+                </p>
                 <p className="text-xs text-foreground/50">In-app alerts</p>
               </div>
             </div>
-            <div className={`w-10 h-6 rounded-full flex items-center transition-all ${
-              settings.notifications ? "bg-white/30" : "bg-white/10"
-            }`}>
-              <div className={`w-5 h-5 bg-white rounded-full transition-transform ${
-                settings.notifications ? "translate-x-4" : ""
-              }`} />
+            <div
+              className={`w-10 h-6 rounded-full flex items-center transition-all ${
+                settings.notifications ? "bg-white/30" : "bg-white/10"
+              }`}
+            >
+              <div
+                className={`w-5 h-5 bg-white rounded-full transition-transform ${
+                  settings.notifications ? "translate-x-4" : ""
+                }`}
+              />
             </div>
           </div>
 
@@ -78,16 +91,22 @@ export function SettingsModal({ isOpen, onOpenChange }: SettingsModalProps) {
             <div className="flex items-center gap-3">
               <Lock size={18} className="text-foreground/70" />
               <div>
-                <p className="text-sm font-medium text-foreground">Email Updates</p>
+                <p className="text-sm font-medium text-foreground">
+                  Email Updates
+                </p>
                 <p className="text-xs text-foreground/50">Weekly digest</p>
               </div>
             </div>
-            <div className={`w-10 h-6 rounded-full flex items-center transition-all ${
-              settings.emailNotifications ? "bg-white/30" : "bg-white/10"
-            }`}>
-              <div className={`w-5 h-5 bg-white rounded-full transition-transform ${
-                settings.emailNotifications ? "translate-x-4" : ""
-              }`} />
+            <div
+              className={`w-10 h-6 rounded-full flex items-center transition-all ${
+                settings.emailNotifications ? "bg-white/30" : "bg-white/10"
+              }`}
+            >
+              <div
+                className={`w-5 h-5 bg-white rounded-full transition-transform ${
+                  settings.emailNotifications ? "translate-x-4" : ""
+                }`}
+              />
             </div>
           </div>
 
@@ -99,16 +118,22 @@ export function SettingsModal({ isOpen, onOpenChange }: SettingsModalProps) {
             <div className="flex items-center gap-3">
               <Volume2 size={18} className="text-foreground/70" />
               <div>
-                <p className="text-sm font-medium text-foreground">Sound Effects</p>
+                <p className="text-sm font-medium text-foreground">
+                  Sound Effects
+                </p>
                 <p className="text-xs text-foreground/50">Message alerts</p>
               </div>
             </div>
-            <div className={`w-10 h-6 rounded-full flex items-center transition-all ${
-              settings.soundEnabled ? "bg-white/30" : "bg-white/10"
-            }`}>
-              <div className={`w-5 h-5 bg-white rounded-full transition-transform ${
-                settings.soundEnabled ? "translate-x-4" : ""
-              }`} />
+            <div
+              className={`w-10 h-6 rounded-full flex items-center transition-all ${
+                settings.soundEnabled ? "bg-white/30" : "bg-white/10"
+              }`}
+            >
+              <div
+                className={`w-5 h-5 bg-white rounded-full transition-transform ${
+                  settings.soundEnabled ? "translate-x-4" : ""
+                }`}
+              />
             </div>
           </div>
 
@@ -129,7 +154,8 @@ export function SettingsModal({ isOpen, onOpenChange }: SettingsModalProps) {
           {/* Info */}
           <div className="p-3 bg-white/5 rounded-lg border border-white/10">
             <p className="text-xs text-foreground/60">
-              Settings are saved automatically. Changes may take a few seconds to sync across devices.
+              Settings are saved automatically. Changes may take a few seconds
+              to sync across devices.
             </p>
           </div>
         </div>

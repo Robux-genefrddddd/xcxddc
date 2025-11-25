@@ -1,7 +1,17 @@
 import { Plus, LogOut, MoreVertical, Trash2, Edit2 } from "lucide-react";
 import { useState } from "react";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
 import { SettingsModal } from "@/components/SettingsModal";
 import { HelpModal } from "@/components/HelpModal";
 
@@ -34,7 +44,7 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleNewConversation = () => {
-    const newId = Math.max(...conversations.map(c => c.id), 0) + 1;
+    const newId = Math.max(...conversations.map((c) => c.id), 0) + 1;
     const newConversation: Conversation = {
       id: newId,
       name: `Conversation ${newId}`,
@@ -45,12 +55,10 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
 
   const handleDeleteConversation = (id: number) => {
     setConversations(
-      conversations.map(c =>
-        c.id === id ? { ...c, isDeleting: true } : c
-      )
+      conversations.map((c) => (c.id === id ? { ...c, isDeleting: true } : c)),
     );
     setTimeout(() => {
-      setConversations(prev => prev.filter(c => c.id !== id));
+      setConversations((prev) => prev.filter((c) => c.id !== id));
       setEditingId(null);
     }, 300);
   };
@@ -64,9 +72,9 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
   const handleSaveEdit = () => {
     if (editingId && editName.trim()) {
       setConversations(
-        conversations.map(c =>
-          c.id === editingId ? { ...c, name: editName } : c
-        )
+        conversations.map((c) =>
+          c.id === editingId ? { ...c, name: editName } : c,
+        ),
       );
     }
     setIsDialogOpen(false);
@@ -98,10 +106,10 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
                 N
               </div>
               <div>
-                <p className="text-sm font-semibold text-foreground">
-                  Nothing
+                <p className="text-sm font-semibold text-foreground">Nothing</p>
+                <p className="text-xs text-white/50 font-medium">
+                  {currentPlan}
                 </p>
-                <p className="text-xs text-white/50 font-medium">{currentPlan}</p>
               </div>
             </div>
             <Popover open={isMenuOpen} onOpenChange={setIsMenuOpen}>
@@ -145,7 +153,10 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
         </div>
 
         {/* New Conversation Button - Discreet */}
-        <div className="px-4 py-2 animate-fadeIn" style={{ animationDelay: "0.1s" }}>
+        <div
+          className="px-4 py-2 animate-fadeIn"
+          style={{ animationDelay: "0.1s" }}
+        >
           <button
             onClick={handleNewConversation}
             className="w-full flex items-center justify-center gap-2 px-3 py-2 border border-white/40 text-foreground/70 hover:border-white/70 hover:text-foreground hover:bg-white/5 transition-all text-xs font-medium rounded-lg"
@@ -165,16 +176,27 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
                 style={{
                   animationDelay: `${0.2 + idx * 0.05}s`,
                   opacity: conv.isDeleting ? 0 : 1,
-                  transform: conv.isDeleting ? "translateX(-10px)" : "translateX(0)",
+                  transform: conv.isDeleting
+                    ? "translateX(-10px)"
+                    : "translateX(0)",
                 }}
               >
-                <div className={`flex items-center gap-2 px-2 py-2 rounded-lg border-2 transition-all ${
-                  conv.active
-                    ? "bg-white/10 border-white"
-                    : "border-white/30 hover:border-white/60"
-                }`}>
+                <div
+                  className={`flex items-center gap-2 px-2 py-2 rounded-lg border-2 transition-all ${
+                    conv.active
+                      ? "bg-white/10 border-white"
+                      : "border-white/30 hover:border-white/60"
+                  }`}
+                >
                   <button
-                    onClick={() => setConversations(conversations.map(c => ({ ...c, active: c.id === conv.id })))}
+                    onClick={() =>
+                      setConversations(
+                        conversations.map((c) => ({
+                          ...c,
+                          active: c.id === conv.id,
+                        })),
+                      )
+                    }
                     className={`flex-1 text-left text-sm transition-all py-1 px-2 rounded ${
                       conv.active
                         ? "text-foreground"
@@ -206,7 +228,10 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
         </div>
 
         {/* Message Usage Section */}
-        <div className="px-4 py-4 border-t border-white/10 animate-fadeIn" style={{ animationDelay: "0.25s" }}>
+        <div
+          className="px-4 py-4 border-t border-white/10 animate-fadeIn"
+          style={{ animationDelay: "0.25s" }}
+        >
           <div className="flex items-center gap-2 mb-2">
             <span className="text-xs text-white/70 font-medium">Messages</span>
           </div>
@@ -224,7 +249,10 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
         </div>
 
         {/* Footer - Sign Out */}
-        <div className="px-4 py-3 border-t border-white/10 animate-fadeIn" style={{ animationDelay: "0.3s" }}>
+        <div
+          className="px-4 py-3 border-t border-white/10 animate-fadeIn"
+          style={{ animationDelay: "0.3s" }}
+        >
           <button className="w-full flex items-center justify-center gap-2 px-3 py-2 text-foreground/70 hover:text-foreground border-2 border-red-500/50 hover:border-red-500 hover:bg-red-500/10 transition-all text-xs font-medium rounded-lg hover:scale-105 transform">
             <LogOut size={16} />
             <span>Sign out</span>
@@ -236,7 +264,9 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogContent className="bg-card border-2 border-white rounded-xl">
           <DialogHeader>
-            <DialogTitle className="text-foreground">Edit Conversation</DialogTitle>
+            <DialogTitle className="text-foreground">
+              Edit Conversation
+            </DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
             <input

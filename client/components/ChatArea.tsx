@@ -1,8 +1,28 @@
 import { Send, Smile } from "lucide-react";
 import { useState } from "react";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
-const EMOJIS = ["😀", "😂", "😍", "🥰", "😎", "🤔", "😢", "😡", "🎉", "🔥", "👍", "❤️", "✨", "🚀", "💯"];
+const EMOJIS = [
+  "😀",
+  "😂",
+  "😍",
+  "🥰",
+  "😎",
+  "🤔",
+  "😢",
+  "😡",
+  "🎉",
+  "🔥",
+  "👍",
+  "❤️",
+  "✨",
+  "🚀",
+  "💯",
+];
 
 export function ChatArea() {
   const [message, setMessage] = useState("");
@@ -39,14 +59,20 @@ export function ChatArea() {
           <h2 className="text-lg font-semibold text-foreground mb-2 animate-slideUp">
             Start a conversation
           </h2>
-          <p className="text-sm text-foreground/60 animate-slideUp" style={{ animationDelay: "0.1s" }}>
+          <p
+            className="text-sm text-foreground/60 animate-slideUp"
+            style={{ animationDelay: "0.1s" }}
+          >
             Type a message below to begin
           </p>
         </div>
       </div>
 
       {/* Message Input Area */}
-      <div className="px-6 py-6 animate-slideUp" style={{ animationDelay: "0.2s" }}>
+      <div
+        className="px-6 py-6 animate-slideUp"
+        style={{ animationDelay: "0.2s" }}
+      >
         <div className="flex items-center gap-3 border-2 border-white rounded-2xl px-4 py-3 bg-background/50 hover:border-white/80 transition-colors group">
           <input
             type="text"
