@@ -116,16 +116,19 @@ export function HelpModal({ isOpen, onOpenChange }: HelpModalProps) {
 
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
+        const tooltipWidth = 300;
+        const tooltipHeight = 200;
+        const padding = 16;
 
         let arrowX = centerX;
         let arrowY = centerY;
-        let tooltipX = centerX;
-        let tooltipY = centerY;
+        let tooltipX = centerX - tooltipWidth / 2;
+        let tooltipY = centerY - tooltipHeight / 2;
 
         switch (step.arrowPosition) {
           case "top":
             arrowY = rect.top - 20;
-            tooltipY = rect.top - 100;
+            tooltipY = rect.top - tooltipHeight - 40;
             break;
           case "bottom":
             arrowY = rect.bottom + 20;
@@ -133,16 +136,25 @@ export function HelpModal({ isOpen, onOpenChange }: HelpModalProps) {
             break;
           case "left":
             arrowX = rect.left - 40;
-            tooltipX = rect.left - 200;
+            tooltipX = rect.left - tooltipWidth - 40;
+            tooltipY = centerY - tooltipHeight / 2;
             break;
           case "right":
             arrowX = rect.right + 40;
-            tooltipX = rect.right + 20;
+            tooltipX = rect.right + 40;
+            tooltipY = centerY - tooltipHeight / 2;
             break;
         }
 
+        // Clamp tooltip to viewport bounds
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+
+        tooltipX = Math.max(padding, Math.min(tooltipX, viewportWidth - tooltipWidth - padding));
+        tooltipY = Math.max(padding, Math.min(tooltipY, viewportHeight - tooltipHeight - padding));
+
         setArrowPos({ x: arrowX - 16, y: arrowY - 16 });
-        setTooltipPos({ x: tooltipX - 150, y: tooltipY });
+        setTooltipPos({ x: tooltipX, y: tooltipY });
       }
     };
 
