@@ -23,7 +23,7 @@ export function Sidebar({ isOpen = true, onClose }: SidebarProps) {
 
       {/* Sidebar */}
       <aside
-        className={`fixed md:static inset-y-0 left-0 w-64 bg-sidebar border-r-2 border-foreground/20 flex flex-col transition-transform ${
+        className={`fixed md:static inset-y-0 left-0 w-64 bg-sidebar border-r-2 border-white/20 flex flex-col transition-transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } md:translate-x-0 z-50 animate-slideInLeft`}
       >
